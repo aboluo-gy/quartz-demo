@@ -21,7 +21,7 @@ public class Hello {
     private static final Logger log = LoggerFactory.getLogger(Hello.class);
 
     public String index(JobExecutionContext context) {
-//        log.info(context.getJobDetail().getKey()+"善良没用，你得漂亮，还得有钱！");
+        log.info(context.getJobDetail().getKey()+"善良没用，你得漂亮，还得有钱！");
         int misfireInstruction = context.getTrigger().getMisfireInstruction();
         String nextTime = Objects.isNull(context.getNextFireTime())?"null":DateUtils.formatDate(context.getNextFireTime());
         log.info(context.getJobDetail().getKey()+"====["+ DateUtils.formatDate(context.getFireTime()) +"],["+ DateUtils.formatDate(context.getScheduledFireTime())+"]"+misfireInstruction+"[nextFireTime]"+nextTime);

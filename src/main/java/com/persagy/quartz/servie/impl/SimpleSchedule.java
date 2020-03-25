@@ -1,4 +1,4 @@
-package com.persagy.quartz.servie;
+package com.persagy.quartz.servie.impl;
 
 import com.persagy.quartz.job.MyJob;
 import org.quartz.JobDetail;

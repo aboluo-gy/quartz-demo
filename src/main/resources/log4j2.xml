@@ -16,12 +16,15 @@
 			<!--输出日志的格式 -->
 			<PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread][%file:%line] - %msg%n" />
 		</console>
+
 		<!--文件会打印出所有信息，这个log每次运行程序会自动清空，由append属性决定，这个也挺有用的，适合临时测试用 -->
-		 <!--<File name="log" fileName="${log_path}/temp.log" append="false">-->
-			<!--<PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n" />-->
-		<!--</File>-->
+		<!--<File name="log" fileName="${log_path}/temp.log" append="false">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n" />
+		</File>-->
+
 		<!--处理DEBUG级别的日志，并把该日志放到logs/debug.log文件中-->
         <!--打印出DEBUG级别日志，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
+		<!--RollingRandomAccessFile性能比RollingFile提升官网宣称是20-200%-->
         <RollingFile name="RollingFileDebug" fileName="${log_path}/debug.log"
                      filePattern="logs/$${date:yyyy-MM}/debug-%d{yyyy-MM-dd}-%i.log">
             <Filters>
@@ -74,15 +77,25 @@
 	</appenders>
 	<!--然后定义logger，只有定义了logger并引入的appender，appender才会生效 -->
 	<loggers>
-		<!--过滤掉spring和mybatis的一些无用的DEBUG信息 -->
-		<logger name="org.springframework" level="WARN"></logger>
-		<logger name="org.mybatis" level="WARN"></logger>
-		<root level="DEBUG">
+		<root level="INFO">
 			<appender-ref ref="Console" />
 			<appender-ref ref="RollingFileInfo" />
 			<!--<appender-ref ref="RollingFileWarn" />-->
 			<appender-ref ref="RollingFileError" />
 			<appender-ref ref="RollingFileDebug"/>
 		</root>
+		<!--log4j2 自带过滤日志-->
+		<logger name="org.springframework" level="WARN"></logger>
+		<logger name="org.mybatis" level="WARN"></logger>
+		<Logger name="org.apache.catalina.startup.DigesterFactory" level="error" />
+		<Logger name="org.apache.catalina.util.LifecycleBase" level="error" />
+		<Logger name="org.apache.coyote.http11.Http11NioProtocol" level="warn" />
+		<logger name="org.apache.sshd.common.util.SecurityUtils" level="warn"/>
+		<Logger name="org.apache.tomcat.util.net.NioSelectorPool" level="warn" />
+		<Logger name="org.crsh.plugin" level="warn" />
+		<logger name="org.crsh.ssh" level="warn"/>
+		<Logger name="org.eclipse.jetty.util.component.AbstractLifeCycle" level="error" />
+		<Logger name="org.hibernate.validator.internal.util.Version" level="warn" />
+		<logger name="org.thymeleaf" level="warn"/>
 	</loggers>
 </configuration>

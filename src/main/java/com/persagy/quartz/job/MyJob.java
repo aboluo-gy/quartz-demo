@@ -25,8 +25,8 @@ public class MyJob extends QuartzJobBean {
         //context.isRecovering() 是否是恢复执行的任务
 //        LOGGER.error("errpr");
 //        LOGGER.warn("warn");
-//        LOGGER.info("qqqqq");
-        hello.index(context);
+        LOGGER.info("info");
+//        hello.index(context);
         try {
             Random random = new Random();
             if(random.nextInt(10)>10){

@@ -1,4 +1,4 @@
-package com.persagy.quartz.servie;
+package com.persagy.quartz.servie.impl;
 
 import com.persagy.quartz.job.MyJob;
 import com.persagy.quartz.util.DateUtils;
@@ -60,6 +60,7 @@ public class CalendarInterval {
         HashSet set = new HashSet<Trigger>();
         set.add(trigger);
         quartzScheduler.scheduleJob(job,set,true);
+
     }
 
 }
