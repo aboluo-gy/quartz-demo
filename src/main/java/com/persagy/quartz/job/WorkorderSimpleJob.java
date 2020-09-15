@@ -9,12 +9,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.QuartzJobBean;
-
+666
 import java.util.Random;
+www
 
-
-@DisallowConcurrentExecution
-@PersistJobDataAfterExecution
+存储66
+得得@PersistJobDataAfterExecution
 public class WorkorderSimpleJob extends QuartzJobBean {
 	@Autowired
 	Hello hello;
