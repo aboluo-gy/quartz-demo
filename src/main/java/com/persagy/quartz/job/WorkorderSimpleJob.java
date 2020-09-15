@@ -11,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
 import java.util.Random;
+www
+www
 
-
-@DisallowConcurrentExecution
 @PersistJobDataAfterExecution
 public class WorkorderSimpleJob extends QuartzJobBean {
 	@Autowired
