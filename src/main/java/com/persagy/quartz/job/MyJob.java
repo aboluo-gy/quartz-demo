@@ -15,7 +15,7 @@ import java.util.Random;
 @DisallowConcurrentExecution
 @PersistJobDataAfterExecution
 public class MyJob extends QuartzJobBean {
-
+顶顶顶
     @Autowired
     Hello hello;
     private static final Logger LOGGER = LoggerFactory.getLogger(MyJob.class);
